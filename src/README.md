@@ -1,7 +1,4 @@
-#Belajar Java Dasar
+#Aplikasi TODOLIST dengan OOP
 
-ini adalah cara untuk membaca file dengan menggunakan java
+ini adalah aplikasi todolist sederhana berbasis terminal
 
-hehehe
-
-mantap
