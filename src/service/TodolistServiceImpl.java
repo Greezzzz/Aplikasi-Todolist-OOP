@@ -2,6 +2,7 @@ package service;
 
 import entity.Todolist;
 import repository.TodolistRepository;
+import repository.TodolistRepositoryImpl;
 
 public class TodolistServiceImpl implements TodolistService {
     private TodolistRepository todolistRepository;
@@ -20,18 +21,25 @@ public class TodolistServiceImpl implements TodolistService {
             var no = i + 1;
 
             if (temp != null) {
-                System.out.println(no + ". " + temp);
+                System.out.println(no + ". " + temp.getTodo());
             }
         }
     }
 
     @Override
     public void addTodoList(String todo) {
-
+        Todolist todolist = new Todolist(todo);
+        todolistRepository.add(todolist);
+        System.out.println("SUKSES MENAMBAH TODO : " + todo);
     }
 
     @Override
     public void removeTodolist(Integer number) {
-
+        boolean success = todolistRepository.remove(number);
+        if (success) {
+            System.out.println("SUKSES MENGHAPUS TODO : " + number);
+        } else {
+            System.out.println("GAGAL MENGHAPUS TODO : " + number);
+        }
     }
 }

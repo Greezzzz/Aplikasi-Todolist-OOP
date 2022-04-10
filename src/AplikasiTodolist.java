@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main {
+public class AplikasiTodolist {
 
     public static String[] todo = new String[10];
     public static Scanner scanner = new Scanner(System.in);
