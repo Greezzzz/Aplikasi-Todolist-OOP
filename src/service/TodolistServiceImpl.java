@@ -5,7 +5,7 @@ import repository.TodolistRepository;
 import repository.TodolistRepositoryImpl;
 
 public class TodolistServiceImpl implements TodolistService {
-    private TodolistRepository todolistRepository;
+    private final TodolistRepository todolistRepository;
 
     public TodolistServiceImpl(TodolistRepository todolistRepository) {
 
@@ -40,6 +40,16 @@ public class TodolistServiceImpl implements TodolistService {
             System.out.println("SUKSES MENGHAPUS TODO : " + number);
         } else {
             System.out.println("GAGAL MENGHAPUS TODO : " + number);
+        }
+    }
+
+    @Override
+    public void checkListTodoList(Integer number) {
+        boolean success = todolistRepository.checkList(number);
+        if (success) {
+            System.out.println("SELESAI : " + number);
+        } else {
+            System.out.println("TIDAK ADA LIST : " + number);
         }
     }
 }

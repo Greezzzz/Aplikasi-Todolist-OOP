@@ -5,7 +5,7 @@ import service.TodolistService;
 
 public class TodolistView {
 
-    private TodolistService todolistService;
+    private final TodolistService todolistService;
 
     public TodolistView(TodolistService todolistService) {
         this.todolistService = todolistService;
@@ -16,19 +16,33 @@ public class TodolistView {
             todolistService.showTodoList();
 
             System.out.println("MENU");
-            System.out.println("1. Tambah");
-            System.out.println("2. Hapus");
-            System.out.println("3. Keluar");
+            System.out.println("1. Checklist");
+            System.out.println("2. Tambah");
+            System.out.println("3. Hapus");
+            System.out.println("4. Keluar");
             var input =inputUtil.input("Pilih");
-            if (input.equals("1")) {
-                addTodolist();
+            if (input.equals("1")){
+                checkList();
             } else if (input.equals("2")) {
-                removeTodolist();
+                addTodolist();
             } else if (input.equals("3")) {
+                removeTodolist();
+            } else if (input.equals("4")) {
                 break;
             } else {
                 System.out.println("Pilihan tidak dimengerti");
             }
+        }
+    }
+
+    public void checkList(){
+        System.out.println("Checklist TODO LIST");
+        var input = inputUtil.input("Tambah (x jika batal) ");
+
+        if (input.equals("x") || input.equals("X")) {
+//            batal
+        } else {
+            todolistService.checkListTodoList(Integer.valueOf(input));
         }
     }
 

@@ -2,6 +2,10 @@ package repository;
 
 import entity.Todolist;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Base64;
+
 public class TodolistRepositoryImpl implements TodolistRepository {
     public Todolist[] data = new Todolist[10];
 
@@ -53,6 +57,40 @@ public class TodolistRepositoryImpl implements TodolistRepository {
             return false;
         } else {
             for (int i = (number - 1); i < data.length; i++) {
+                if (i == (data.length - 1)) {
+                    data[i] = null;
+                } else {
+                    data[i] = data[i + 1];
+                }
+            }
+            return true;
+        }
+    }
+
+    public String encode(String encode){
+        String base = Base64.getEncoder().encodeToString(encode.getBytes());
+        return base;
+    }
+
+    public void writeFile(String write) {
+        try {
+            FileWriter writer = new FileWriter("src/Data/History.txt",true);
+            writer.write(encode(write)+"\n");
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("error");
+            e.printStackTrace();
+        }
+    }
+    @Override
+    public boolean checkList(Integer num) {
+        if ((num - 1) >= data.length) {
+            return false;
+        } else if (data[num - 1] == null) {
+            return false;
+        } else {
+            writeFile(String.valueOf(data[num-1].getTodo()));
+            for (int i = (num - 1); i < data.length; i++) {
                 if (i == (data.length - 1)) {
                     data[i] = null;
                 } else {

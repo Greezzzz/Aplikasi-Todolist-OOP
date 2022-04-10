@@ -9,4 +9,6 @@ public interface TodolistRepository {
     void add(Todolist todolist);
 
     boolean remove(Integer number);
+
+    boolean checkList(Integer num);
 }
