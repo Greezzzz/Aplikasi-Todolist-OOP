@@ -3,7 +3,7 @@ import java.io.FileReader;
 
 public class BacaFile {
     public static void main(String[] args) {
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/README.md"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("D:/JAVA/TODO LIST/README.md"))) {
             while (true) {
                 String line = reader.readLine();
                 if (line == null) {
